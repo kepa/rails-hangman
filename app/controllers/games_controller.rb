@@ -21,7 +21,7 @@ class GamesController < ApplicationController
 
   # POST /games or /games.json
   def create
-    @game = Game.new(game_params)
+    @game = Game.new
 
     respond_to do |format|
       if @game.save
@@ -36,6 +36,7 @@ class GamesController < ApplicationController
 
   # PATCH/PUT /games/1 or /games/1.json
   def update
+    @game.play_round('d')
     respond_to do |format|
       if @game.update(game_params)
         format.html { redirect_to game_url(@game), notice: "Game was successfully updated." }
