@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lives: 1
+  word: MyString
+  current_try: MyString
+  wrong_letters: MyString
+
+two:
+  lives: 1
+  word: MyString
+  current_try: MyString
+  wrong_letters: MyString
