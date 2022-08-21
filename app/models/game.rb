@@ -6,17 +6,6 @@ class Game < ApplicationRecord
     self.wrong_letters = ''
   end
 
-  def choose_word
-    dictionary = File.readlines('/Users/sacul/Developer/rails/rails-hangman/lib/assets/google-10000-english-no-swears.txt')
-    dictionary[rand(0..999)].delete("\n")
-  end
-
-  def create_tries(size)
-    str = ''
-    size.times { str << '*' }
-    str
-  end
-
   def self.play_round(letter, id)
     wrong = true
     game = Game.find(id)
@@ -33,16 +22,29 @@ class Game < ApplicationRecord
     game.save
   end
 
-  def add_wrong_letters(char)
-    wrong_letters << "#{char}, "
-  end
-
   def win?
     current_try == word
   end
 
+  private
+
   def decrease_life
     self.lives -= 1
+  end
+
+  def create_tries(size)
+    str = ''
+    size.times { str << '*' }
+    str
+  end
+
+  def add_wrong_letters(char)
+    wrong_letters << "#{char}, "
+  end
+
+  def choose_word
+    dictionary = File.readlines('/Users/sacul/Developer/rails/rails-hangman/lib/assets/google-10000-english-no-swears.txt')
+    dictionary[rand(0..999)].delete("\n")
   end
 
 end
