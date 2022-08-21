@@ -36,9 +36,9 @@ class GamesController < ApplicationController
 
   # PATCH/PUT /games/1 or /games/1.json
   def update
-    @game.play_round('d')
+    Game.play_round(game_params[:chance],@game.id)
     respond_to do |format|
-      if @game.update(game_params)
+      if @game.save
         format.html { redirect_to game_url(@game), notice: "Game was successfully updated." }
         format.json { render :show, status: :ok, location: @game }
       else
@@ -66,6 +66,6 @@ class GamesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def game_params
-      params.require(:game).permit(:lives, :word, :current_try, :wrong_letters)
+      params.require(:game).permit(:lives, :word, :chance, :wrong_letters)
     end
 end

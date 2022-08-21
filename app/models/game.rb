@@ -17,22 +17,24 @@ class Game < ApplicationRecord
     str
   end
 
-  def play_round(letter)
+  def self.play_round(letter, id)
     wrong = true
+    game = Game.find(id)
 
-    word.split('').each_with_index do |char, index|
+    game.word.split('').each_with_index do |char, index|
       if char == letter
-        current_try[index] = letter
+        game.current_try[index] = letter
         wrong = false
       end
     end
 
-    add_wrong_letters(letter) if wrong
-    #wrong
+    game.add_wrong_letters(letter) if wrong
+    game.decrease_life if wrong
+    game.save
   end
 
   def add_wrong_letters(char)
-    wrong_letters << ", #{char}"
+    wrong_letters << "#{char}, "
   end
 
   def win?
