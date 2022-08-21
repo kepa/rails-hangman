@@ -37,15 +37,14 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1 or /games/1.json
   def update
     Game.play_round(game_params[:chance],@game.id)
-    respond_to do |format|
-      if @game.save
-        format.html { redirect_to game_url(@game), notice: "Game was successfully updated." }
-        format.json { render :show, status: :ok, location: @game }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @game.errors, status: :unprocessable_entity }
-      end
+    if @game.lives.zero?
+      redirect_to game_url(@game), notice: "GAME OVER!"
+    elsif @game.win?
+      redirect_to game_url(@game), notice: "You win!"
+    else
+      redirect_to game_url(@game)
     end
+
   end
 
   # DELETE /games/1 or /games/1.json
