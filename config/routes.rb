@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'static_page/home'
+  root "static_page#home"
   resources :games
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

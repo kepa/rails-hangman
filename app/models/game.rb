@@ -26,20 +26,20 @@ class Game < ApplicationRecord
     current_try == word
   end
 
-  private
+  def add_wrong_letters(char)
+    wrong_letters << "#{char}, "
+  end
 
   def decrease_life
     self.lives -= 1
   end
 
+  private
+
   def create_tries(size)
     str = ''
     size.times { str << '*' }
     str
-  end
-
-  def add_wrong_letters(char)
-    wrong_letters << "#{char}, "
   end
 
   def choose_word
