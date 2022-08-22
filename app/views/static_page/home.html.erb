@@ -1,3 +1,4 @@
 <h1>Rails Hangman</h1>
-<%= link_to "New game", new_game_path %>
+<%= button_to "New game",games_path, method: :post %>
+
 <%= link_to "Load game", games_path %>
