@@ -28,13 +28,13 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1 or /games/1.json
   def update
     Game.play_round(game_params[:chance],@game.id)
-    if @game.lives.zero?
-      redirect_to game_url(@game), notice: "GAME OVER!"
-    elsif @game.win?
-      redirect_to game_url(@game), notice: "You win!"
-    else
-      redirect_to game_url(@game)
-    end
+
+    # redirect_to game_url(@game), notice: "GAME OVER!" if @game.lives.zero?
+
+    # redirect_to game_url(@game), notice: "You win!" if @game.win?
+
+    redirect_to game_url(@game)
+
 
   end
 
