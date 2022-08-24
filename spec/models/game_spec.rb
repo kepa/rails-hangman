@@ -21,5 +21,9 @@ RSpec.describe "Games", type: :model do
       subject.play_round('t')
       expect(subject.current_try).to include('t')
     end
+
+    it 'should only accept a single char as input' do
+      expect{subject.play_round('tt')}.to raise_error(StandardError)
+    end
   end
 end

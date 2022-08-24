@@ -9,6 +9,7 @@ class Game < ApplicationRecord
   end
 
   def play_round(letter)
+    raise StandardError.new "Only one char allowed" if letter.length > 1
     wrong = true
 
     word.split('').each_with_index do |char, index|
