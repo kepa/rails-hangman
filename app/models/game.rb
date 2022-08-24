@@ -1,7 +1,9 @@
 class Game < ApplicationRecord
+  validates_presence_of  :lives, :word, :current_try, :wrong_letters, on: :update
+
   before_create do
     self.lives = 5
-    self.word = choose_word
+    self.word = choose_word if self.word.nil?
     self.current_try = create_tries(word.length)
     self.wrong_letters = ''
   end
