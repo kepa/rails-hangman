@@ -6,38 +6,20 @@ RSpec.describe "Games", type: :model do
     Game.new(lives: 5, word: 'test', current_try: '*****', wrong_letters: '')
   }
 
-  # describe 'model validation' do
-  #   it "is valid with valid attributes" do
-  #     expect(subject).to be_valid
-  #   end
-
-  #   it "is not valid without a word" do
-  #     subject.word = nil
-  #     expect(subject).to_not be_valid
-  #   end
-
-  #   it "is not valid without lives" do
-  #   end
-
-  #   it "is not valid without a current try" do
-  #   end
-  # end
-
-  describe '#add_wrong_letters' do
-    it 'updates wrong letters atribute on object' do
-      subject.add_wrong_letters('v')
-      expect(subject.wrong_letters).to eql("v, ")
+  describe '#play_round' do
+    it 'should add wrong letter if wrong' do
+      subject.play_round('v')
+      expect(subject.wrong_letters).to include('v')
     end
-  end
 
-  describe '#decrease_life' do
-    it 'updates current lives atribute on object' do
-      subject.decrease_life
+    it 'should take a life if wrong' do
+      subject.play_round('v')
       expect(subject.lives).to eql(4)
     end
-  end
 
-  describe '#play_round' do
-    it ''
+    it 'should add correct letter if right' do
+      subject.play_round('t')
+      expect(subject.current_try).to include('t')
+    end
   end
 end

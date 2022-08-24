@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-  validates_presence_of  :lives, :word, :current_try, :wrong_letters, on: :update
+  validates_presence_of  :lives, :word, :current_try, on: :update
 
   before_create do
     self.lives = 5
@@ -8,33 +8,25 @@ class Game < ApplicationRecord
     self.wrong_letters = ''
   end
 
-  def self.play_round(letter, id)
+  def play_round(letter)
     wrong = true
-    game = Game.find(id)
 
-    game.word.split('').each_with_index do |char, index|
+    word.split('').each_with_index do |char, index|
       if char == letter
-        game.current_try[index] = letter
+        current_try[index] = letter
         wrong = false
       end
     end
 
-    game.add_wrong_letters(letter) if wrong
-    game.decrease_life if wrong
-    game.save
+    add_wrong_letters(letter) if wrong
+    decrease_life if wrong
+
   end
 
   def win?
     current_try == word
   end
 
-  def add_wrong_letters(char)
-    wrong_letters << "#{char}, "
-  end
-
-  def decrease_life
-    self.lives -= 1
-  end
 
   private
 
@@ -47,6 +39,14 @@ class Game < ApplicationRecord
   def choose_word
     dictionary = File.readlines('/Users/sacul/Developer/rails/rails-hangman/lib/assets/google-10000-english-no-swears.txt')
     dictionary[rand(0..999)].delete("\n")
+  end
+
+  def add_wrong_letters(char)
+    wrong_letters << "#{char}, "
+  end
+
+  def decrease_life
+    self.lives -= 1
   end
 
 end
