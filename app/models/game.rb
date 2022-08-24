@@ -9,25 +9,24 @@ class Game < ApplicationRecord
   end
 
   def play_round(letter)
-    raise StandardError.new "Only one char allowed" if letter.length > 1
+    raise StandardError.new 'Only one char allowed' if letter.length > 1
     wrong = true
 
-    word.split('').each_with_index do |char, index|
+    self.word.split('').each_with_index do |char, index|
       if char == letter
-        current_try[index] = letter
+        self.current_try[index] = letter
         wrong = false
       end
     end
 
-    add_wrong_letters(letter) if wrong
-    decrease_life if wrong
+    self.add_wrong_letters(letter) if wrong
+    self.decrease_life if wrong
 
   end
 
   def win?
     current_try == word
   end
-
 
   private
 
@@ -43,7 +42,7 @@ class Game < ApplicationRecord
   end
 
   def add_wrong_letters(char)
-    wrong_letters << "#{char}, "
+    self.wrong_letters << "#{char}, "
   end
 
   def decrease_life
