@@ -6,22 +6,22 @@ RSpec.describe "Games", type: :model do
     Game.new(lives: 5, word: 'test', current_try: '*****', wrong_letters: '')
   }
 
-  describe 'model validation' do
-    it "is valid with valid attributes" do
-      expect(subject).to be_valid
-    end
+  # describe 'model validation' do
+  #   it "is valid with valid attributes" do
+  #     expect(subject).to be_valid
+  #   end
 
-    it "is not valid without a word" do
-      subject.word = nil
-      expect(subject).to_not be_valid
-    end
+  #   it "is not valid without a word" do
+  #     subject.word = nil
+  #     expect(subject).to_not be_valid
+  #   end
 
-    it "is not valid without lives" do
-    end
+  #   it "is not valid without lives" do
+  #   end
 
-    it "is not valid without a current try" do
-    end
-  end
+  #   it "is not valid without a current try" do
+  #   end
+  # end
 
   describe '#add_wrong_letters' do
     it 'updates wrong letters atribute on object' do
@@ -35,5 +35,9 @@ RSpec.describe "Games", type: :model do
       subject.decrease_life
       expect(subject.lives).to eql(4)
     end
+  end
+
+  describe '#play_round' do
+    it ''
   end
 end
