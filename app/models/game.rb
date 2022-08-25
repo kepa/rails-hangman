@@ -12,15 +12,15 @@ class Game < ApplicationRecord
     raise StandardError.new 'Only one char allowed' if letter.length > 1
     wrong = true
 
-    self.word.split('').each_with_index do |char, index|
+    word.split('').each_with_index do |char, index|
       if char == letter
-        self.current_try[index] = letter
+        current_try[index] = letter
         wrong = false
       end
     end
 
-    self.add_wrong_letters(letter) if wrong
-    self.decrease_life if wrong
+    add_wrong_letters(letter) if wrong
+    decrease_life if wrong
 
   end
 
@@ -37,7 +37,8 @@ class Game < ApplicationRecord
   end
 
   def choose_word
-    dictionary = File.readlines('/Users/sacul/Developer/rails/rails-hangman/lib/assets/google-10000-english-no-swears.txt')
+    #dictionary = File.readlines('/Users/sacul/Developer/rails/rails-hangman/lib/assets/google-10000-english-no-swears.txt')
+    dictionary = File.readlines("#{Rails.root}/lib/assets/top-1000.txt")
     dictionary[rand(0..999)].delete("\n")
   end
 

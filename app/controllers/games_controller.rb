@@ -1,6 +1,11 @@
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
-
+  MSG = {
+      win: 'YOU WIN!',
+      game_over: 'YOU LOSE',
+      correct: "You're correct!",
+      wrong: "Wrong letter"
+    }
   # GET /games or /games.json
   def index
     @games = Game.all
@@ -28,9 +33,9 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1 or /games/1.json
   def update
     @game.play_round(game_params[:chance])
-    binding.pry
+    #binding.pry
     if @game.save
-      redirect_to game_url(@game)
+      redirect_to game_url(@game), notice: MSG[:correct]
     end
 
   end
