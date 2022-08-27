@@ -8,6 +8,8 @@ class Game < ApplicationRecord
     self.wrong_letters = ''
   end
 
+  after_save :check_game_done
+
   def play_round(letter)
     raise StandardError.new 'Only one char allowed' if letter.length > 1
     wrong = true
@@ -26,6 +28,10 @@ class Game < ApplicationRecord
 
   def win?
     current_try == word
+  end
+
+  def lost?
+    self.lives == 0
   end
 
   private
@@ -47,6 +53,10 @@ class Game < ApplicationRecord
 
   def decrease_life
     self.lives -= 1
+  end
+
+  def check_game_done
+    self.done = true if self.win? or self.lost?
   end
 
 end
