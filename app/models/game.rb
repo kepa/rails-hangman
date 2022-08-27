@@ -37,7 +37,6 @@ class Game < ApplicationRecord
   end
 
   def choose_word
-    #dictionary = File.readlines('/Users/sacul/Developer/rails/rails-hangman/lib/assets/google-10000-english-no-swears.txt')
     dictionary = File.readlines("#{Rails.root}/lib/assets/top-1000.txt")
     dictionary[rand(0..999)].delete("\n")
   end
