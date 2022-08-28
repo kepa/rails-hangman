@@ -2,8 +2,13 @@
 
 <%= render @game %>
 
+<% unless @game.done %>
+  <%= render "keyboard", game: @game %>
+<% end %>
+  
+
 <div>
-  <%= link_to "Edit this game", edit_game_path(@game) %> |
+  
   <%= link_to "Back to games", games_path %>
 
   <%= button_to "Forfit this game", @game, method: :delete %>

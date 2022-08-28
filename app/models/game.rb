@@ -8,7 +8,7 @@ class Game < ApplicationRecord
     self.wrong_letters = ''
   end
 
-  after_save :check_game_done
+  before_update :check_game_done
 
   def play_round(letter)
     raise StandardError.new 'Only one char allowed' if letter.length > 1
