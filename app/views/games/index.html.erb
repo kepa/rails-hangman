@@ -8,7 +8,8 @@
     <p>
       <%= link_to "Show this game", game %>
     </p>
+      <%= button_to "Quit game", game, method: :delete %>
   <% end %>
 </div>
 
-<%= link_to "New game", games_path, method: :post %>
+<%= button_to "New game",games_path, method: :post %>
