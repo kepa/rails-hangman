@@ -3,7 +3,7 @@
 <%= render @game %>
 
 <% unless @game.done %>
-  <%= render "keyboard", game: @game %>
+  <%= render "update_field", game: @game %>
 <% end %>
   
 
