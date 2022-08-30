@@ -3,12 +3,18 @@
 <h1>Games</h1>
 
 <div id="games">
-  <% @games.each do |game| %>
-    <%= render game %>
-    <p>
-      <%= link_to "Show this game", game %>
-    </p>
-      <%= button_to "Quit game", game, method: :delete %>
+  <% @games.each_with_index do |game, index| %>
+    
+    <div class="game-item">
+      <p>
+        <%= "Game ##{index +1}: " %>
+        <%= game.current_try %>
+        <%= link_to "Show this game", game %>
+    
+        <%= button_to "Quit", game, method: :delete %>
+      </p>
+    </div>
+
   <% end %>
 </div>
 

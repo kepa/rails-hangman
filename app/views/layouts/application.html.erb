@@ -12,10 +12,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="main-cont">
+      <div class="display">
+        <%= yield %>
+      </div> 
 
-    <%= render "partials/keyboard"%>
-
+      <%= render "partials/keyboard"%>
+      
+    </div>
   </body>
 
   <%= javascript_include_tag "keyboard" %>
