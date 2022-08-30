@@ -1,4 +1,4 @@
-const realDisplay = document.querySelector('#game_chance');
+var realDisplay = document.querySelector('#game_chance');
 
 const changeDisplayValue = function(value) {
 
