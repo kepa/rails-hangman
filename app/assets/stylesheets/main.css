@@ -4,16 +4,23 @@ html, body{
 
 body {
 	display: flex;
-	align-content: center;
+	align-items: center;
 	justify-content: center;
 }
 
 .main-cont {
-	width:  25%;
+	width:  30%;
 	display: flex;
 	flex-direction: column;
 	gap: 25px;
 	font-family: Helvetica, sans-serif;
+	background-color: lightgray;
+	padding: 3.5%;
 }
 
+.display {
+	background-color: white;
+	padding: 4%;
+	border: 30px solid black;
+}
 
