@@ -8,7 +8,7 @@ body {
 	justify-content: center;
 }
 
-.main-cont {
+.center-cont {
 	width:  35%;
 	display: flex;
 	flex-direction: column;
@@ -19,9 +19,28 @@ body {
 }
 
 .display {
-	background-color: white;
+	background-color: white;	
+}
+
+.top-bar, .bottom-bar {
+	text-align: center;
+	border: 1px solid black ;
+	padding: 3px;
+}
+
+.main-cont {
+	min-height: 200px;
+	display: flex;
 	padding: 4%;
-	border: 30px solid black;
+	border: 1px solid black;
+}
+
+.hangman-display {
+	flex: 1;
+}
+
+.navigation {
+	flex: 2;
 }
 
 .keyboard {

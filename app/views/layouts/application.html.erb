@@ -12,14 +12,23 @@
   </head>
 
   <body>
-    <div class="main-cont">
+    <div class="center-cont">
 
       <div class="display">
-        <%= yield %>
+
+        <div class="top-bar"> railsHangman v.0.1</div> 
+
+        <div class="main-cont">
+          <div class="hangman-display"></div>
+          <div class="navigation"> <%= yield %></div>
+        </div>
+
+        <div class="bottom-bar"> © 2022 Lucas Falbo</div>
+      
       </div> 
 
       <h1>RAILS BOY</h1>
-      
+
       <%= render "partials/keyboard"%>
 
     </div>
