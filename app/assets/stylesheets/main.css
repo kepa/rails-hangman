@@ -8,6 +8,22 @@ body {
 	justify-content: center;
 }
 
+button {
+	font-weight: bold;
+	background-color: white;
+	padding: 5px 15px;
+	border-radius: 30px;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+button:active {
+	background-color: black;
+	color: white;
+}
+
 .center-cont {
 	width:  35%;
 	display: flex;
@@ -31,7 +47,6 @@ body {
 .main-cont {
 	min-height: 200px;
 	display: flex;
-	padding: 4%;
 	border: 1px solid black;
 }
 

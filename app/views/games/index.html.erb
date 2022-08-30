@@ -1,18 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Games</h1>
-
 <div id="games">
   <% @games.each_with_index do |game, index| %>
     
     <div class="game-item">
-      <p>
+
+      <%= link_to(game) do %>
         <%= "Game ##{index +1}: " %>
         <%= game.current_try %>
-        <%= link_to "Show this game", game %>
-    
-        <%= button_to "Quit", game, method: :delete %>
-      </p>
+        
+      <% end %>
+      <%= button_to "Quit", game, method: :delete %>
     </div>
 
   <% end %>
