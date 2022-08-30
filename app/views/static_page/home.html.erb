@@ -1,4 +1,8 @@
-<h1>Rails Hangman</h1>
-<%= button_to "New game",games_path, method: :post %>
+<div class="root-menu">
+	<h1>Welcome to railsHangman version 0.1!</h1>
 
-<%= link_to "Load game", games_path %>
+	<div class="root-options">
+		<%= button_to "New game",games_path, method: :post, class: "new-game" %>
+		<%= button_to "Load game",games_path, method: :get, class: "load-game"%>
+	</div>
+</div>
