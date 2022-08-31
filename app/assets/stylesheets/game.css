@@ -13,7 +13,12 @@
 }
 
 .game-item button {
-	padding: 5px 5px;
+	padding: 5px 10px;
+}
+
+.game-item button:hover {
+	background-color: red;
+	border-color: red;
 }
 
 .game-item:hover {
